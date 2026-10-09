@@ -91,10 +91,10 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Zhakyp Zhanasyl',
+                  'Nurdaulet Orazgeldy',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                const Text('Senior Lecturer'),
+                const Text('IT Student'),
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
