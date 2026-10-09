@@ -91,7 +91,7 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Nurdaulet Amanzholov',
+                  'Nurdaulet Orazgeldy',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const Text('IT Student'),
