@@ -91,7 +91,7 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Nurdaulet Orazgeldy',
+                  'Nurdaulet Amanzholov',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const Text('IT Student'),
@@ -132,11 +132,8 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 12,
-                  runSpacing: 12,
-                  crossAxisAlignment: WrapCrossAlignment.center,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     // 1. Кнопка Follow
                     ElevatedButton.icon(
@@ -144,7 +141,7 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                       icon: Icon(_isFollowing ? Icons.check : Icons.person_add),
                       label: Text(_isFollowing ? 'Following' : 'Follow'),
                     ),
-                    
+
                     // 2. Кнопка Reset
                     TextButton.icon(
                       onPressed: _resetState,

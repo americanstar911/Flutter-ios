@@ -1,5 +1,5 @@
 void checkBalance({required String name, required double balance}) =>
-    print("Name: $name \nBalance: $balance \n -------");
+    print("Hello $name, your balance is: $balance \n-------");
 
 double deposit(double currentBalance, double? amount) {
     amount ??= 0.0;
