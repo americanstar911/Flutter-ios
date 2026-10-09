@@ -1,17 +1,32 @@
-# lab4
+# Lab 4 — Interactive profile card
 
-A new Flutter project.
+Follow/Following changes the follower count. Like and Dislike change the like count by one. Reset restores the initial values. State is updated with `setState()`.
 
-## Getting Started
+## Run on macOS
 
-This project is a starting point for a Flutter application.
+From the repository root (the `Tasks ` directory has a trailing space):
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+cd "Tasks /LW4"
+flutter pub get
+flutter run -d macos
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Run in the iOS Simulator
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+open -a Simulator
+flutter devices
+flutter run -d <SIMULATOR_DEVICE_ID>
+```
+
+Use the simulator ID listed by `flutter devices`. With Xcode 27, the simulator app is called DeviceHub. If no iOS runtime is installed, install it through Xcode Settings → Components.
+
+## Check the project
+
+```sh
+flutter analyze
+flutter test
+```
+
+The widget test checks Follow/Following, Like, Dislike and Reset at a 375-pixel screen width. Build outputs, local SDK paths, IDE files and nested Git metadata are excluded from version control. Flutter includes its own Dart SDK; the version required by `pubspec.yaml` must be available.
