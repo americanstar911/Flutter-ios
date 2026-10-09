@@ -45,14 +45,14 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
     });
   }
 
-  // При каждом нажатии прибавляем 1
+  // +1
   void _incrementLike() {
     setState(() {
       _likesCount++;
     });
   }
 
-  // При каждом нажатии отнимаем 1
+  // -1
   void _decrementLike() {
     setState(() {
       _likesCount--;
@@ -135,14 +135,14 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    // 1. Кнопка Follow
+                    // follow
                     ElevatedButton.icon(
                       onPressed: _toggleFollow,
                       icon: Icon(_isFollowing ? Icons.check : Icons.person_add),
                       label: Text(_isFollowing ? 'Following' : 'Follow'),
                     ),
 
-                    // 2. Кнопка Reset
+                    // reset
                     TextButton.icon(
                       onPressed: _resetState,
                       icon: const Icon(Icons.refresh, color: Colors.grey),
@@ -152,7 +152,7 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                       ),
                     ),
 
-                    // 3. Блок с кнопками Like и Dislike (друг под другом)
+                    // like/dislike
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -161,7 +161,7 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                           icon: const Icon(Icons.thumb_up, color: Colors.green),
                           label: const Text('Like'),
                         ),
-                        const SizedBox(height: 8), // Отступ между кнопками
+                        const SizedBox(height: 8),
                         OutlinedButton.icon(
                           onPressed: _decrementLike,
                           icon: const Icon(Icons.thumb_down, color: Colors.red),
