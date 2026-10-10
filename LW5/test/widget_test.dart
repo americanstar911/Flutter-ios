@@ -15,7 +15,7 @@ Future<void> launchApp(WidgetTester tester, Size size) async {
     tester.view.resetDevicePixelRatio();
   });
 
-  await tester.pumpWidget(const Lab5App());
+  await tester.pumpWidget(const Lab5App(isRegistered: true));
   await tester.pumpAndSettle();
 }
 

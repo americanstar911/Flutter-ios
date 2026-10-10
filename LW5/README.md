@@ -1,69 +1,83 @@
-# LAB 5 — Adaptive Product Detail Screen
+# Footwear
 
-A Flutter product detail screen for a sneaker store.
+Flutter coursework app inspired by Maison Margiela.
+LAB 5 and LAB 6 are implemented in the same project.
 
-## Features
+Author: Nurdaulet Orazgeldy
+Project folder: LW5
 
-- Product photo with a bookmark button over it.
-- Product title, star rating and price.
-- Category badges that wrap onto the next line.
-- A sticky bottom action bar.
-- A full-width Add to Cart button.
-- Working bookmark toggle and cart counter.
-- A confirmation message after adding a product.
+## LAB 5 — Catalog and Product Details
 
-## Layout
+- Three categories: TABI, REPLICA and FUTURE.
+- Nine products with local images.
+- Product details: name, price, rating, description and tags.
+- Bookmark buttons and a favourites filter.
+- Add to Cart button with a confirmation message.
+- Responsive layout and scrollable screens.
 
-- Stack and Positioned place the bookmark over the photo.
-- Row arranges the title and rating.
-- Wrap arranges category badges.
-- Expanded makes the cart button fill the available width.
-- ListView allows scrolling.
-- SafeArea keeps content away from system areas.
-- ConstrainedBox limits the content width on large screens.
+Widgets: Column, Row, Card, Stack, Positioned, Wrap,
+Expanded, LayoutBuilder and SafeArea.
 
-## Folder Structure
+## LAB 6 — Registration and Form Validation
 
-- lib/main.dart — application entry point.
-- lib/screens/product_screen.dart — screen and interactive state.
-- lib/widgets/product_cover.dart — photo and bookmark.
-- lib/widgets/product_info.dart — product information.
-- lib/widgets/cart_action_bar.dart — bottom action bar.
-- assets/images/sneaker.jpg — local product photo.
-- test/widget_test.dart — layout and interaction tests.
+- Full Name: required and cannot be empty.
+- Email: required and validated with @ and a domain dot.
+- Password: required, minimum 6 characters and hidden.
+- Confirm Password: must match the password exactly.
+- Required Terms and Conditions checkbox.
+- Role dropdown: Student, Teacher or Developer.
+- GlobalKey<FormState> validates the form on submission.
+- Validation also updates while typing.
+- Invalid fields show error messages.
+- Valid submissions print name, email, role and terms acceptance.
+- TextEditingController instances are released in dispose().
+
+## Registration Flow
+
+- First launch opens the registration screen.
+- Successful registration saves name, email, role and a registration flag
+  locally using shared_preferences.
+- A success dialog shows the saved details.
+- Continue opens the catalog.
+- Later launches on the same installation open the catalog directly.
+- Passwords are not saved or printed.
+
+The catalog profile icon opens the form again as a demonstration.
+That form shows a success SnackBar and does not update the saved profile.
 
 ## Run
 
 From the repository root:
 
-```bash
-cd LW5
-flutter pub get
-flutter run
-```
+    cd LW5
+    flutter pub get
+    flutter run
 
-Select iPhone 17 to run on the iOS simulator.
+For Xcode, open LW5/ios/Runner.xcworkspace.
 
-## Validation
+## Checks
 
-From the LW5 folder:
+Inside LW5:
 
-```bash
-flutter analyze
-flutter test
-```
+    dart format lib test
+    flutter analyze
+    flutter test
 
-All 5 tests passed. Layout tests cover 320×568, 430×932,
-1024×768 and 568×320. Interaction tests check the bookmark
-toggle and cart counter.
+## Limitations
 
-## Notes
+- Registration is local; there is no server account or sign-in.
+- There is no separate profile viewing or editing screen.
+- Bookmarks reset after a full restart.
+- Add to Cart only shows a confirmation.
+- Prices and ratings are demo data.
 
-Product data is for demonstration.
-Bookmark and cart state are stored in memory.
+## Credits
 
-Photo source: [Unsplash](https://images.unsplash.com/photo-1542291026-7eec264c27ff).
+Product images and design inspiration: https://www.maisonmargiela.com/
+Fonts: Cormorant Garamond and Roboto Mono.
+
+Educational project.
 
 ## Author
 
-Nurdaulet Orazgeldy
+Nurdaulet Orazgeldyы
