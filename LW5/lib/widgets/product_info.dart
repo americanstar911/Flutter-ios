@@ -1,62 +1,84 @@
 import 'package:flutter/material.dart';
 
+import '../data/products.dart';
+import '../models/product.dart';
+
 class ProductInfo extends StatelessWidget {
-  const ProductInfo({super.key});
+  final Product? product;
+
+  const ProductInfo({super.key, this.product});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final item = product ?? products.first;
+
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          item.category,
+          style: const TextStyle(
+            fontSize: 12,
+            letterSpacing: 2,
+            color: Colors.black54,
+          ),
+        ),
+        const SizedBox(height: 12),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: Text(
-                'Nike Sneakers',
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                item.name,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  height: 1.3,
+                ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.star, color: Colors.amber, size: 22),
-                SizedBox(width: 4),
-                Text('4.8', style: TextStyle(fontSize: 18)),
+                const Icon(Icons.star, size: 18),
+                const SizedBox(width: 4),
+                Text(
+                  item.rating.toStringAsFixed(1),
+                  style: const TextStyle(fontSize: 14),
+                ),
               ],
             ),
           ],
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 16),
         Text(
-          '59 990 ₸',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.indigo,
-          ),
+          item.formattedPrice,
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 20),
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: [
-            Chip(label: Text('Sneakers')),
-            Chip(label: Text('Sport')),
-            Chip(label: Text('Everyday')),
-          ],
+          children: item.tags.map((tag) {
+            return Chip(
+              label: Text(tag),
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+              side: const BorderSide(color: Colors.black26),
+              shape: const RoundedRectangleBorder(),
+            );
+          }).toList(),
         ),
-        SizedBox(height: 20),
-        Text(
-          'About this product',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        const SizedBox(height: 24),
+        const Text(
+          'ABOUT THIS PRODUCT',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 12),
         Text(
-          'Lightweight sneakers for everyday activities. '
-          'A comfortable fit and a simple sporty design.',
-          style: TextStyle(fontSize: 16, height: 1.5),
+          item.description,
+          style: const TextStyle(fontSize: 14, height: 1.7),
         ),
       ],
     );

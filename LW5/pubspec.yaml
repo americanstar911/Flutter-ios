@@ -1,5 +1,5 @@
 name: lab5
-description: "LAB 5 - Adaptive E-Commerce Item Detail Screen"
+description: "Footwear Store - LAB 5 and Capstone Milestone 1"
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -18,5 +18,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
   assets:
-    - assets/images/sneaker.jpg
+    - assets/images/
+
+  fonts:
+    - family: CormorantGaramond
+      fonts:
+        - asset: assets/fonts/CormorantGaramond.ttf
+
+    - family: RobotoMono
+      fonts:
+        - asset: assets/fonts/RobotoMono.ttf
