@@ -1,7 +1,7 @@
 # Footwear
 
 Flutter coursework app inspired by Maison Margiela.
-LAB 5 and LAB 6 are implemented in the same project.
+LAB 5, LAB 6 and LAB 7 are implemented in the same project.
 
 Author: Nurdaulet Orazgeldy
 Project folder: LW5
@@ -32,18 +32,72 @@ Expanded, LayoutBuilder and SafeArea.
 - Valid submissions print name, email, role and terms acceptance.
 - TextEditingController instances are released in dispose().
 
-## Registration Flow
+### Registration Flow
 
 - First launch opens the registration screen.
 - Successful registration saves name, email, role and a registration flag
   locally using shared_preferences.
 - A success dialog shows the saved details.
-- Continue opens the catalog.
-- Later launches on the same installation open the catalog directly.
+- Continue opens the root screen with the bottom navigation bar.
+- Later launches on the same installation open the root screen directly.
 - Passwords are not saved or printed.
 
-The catalog profile icon opens the form again as a demonstration.
-That form shows a success SnackBar and does not update the saved profile.
+## LAB 7 — Multi-Screen App with Navigation and Tabs
+
+Topics: Navigator.push, Navigator.pop, passing data arguments,
+BottomNavigationBar.
+
+### Root screen (BottomNavigationBar)
+
+- **Feed:** product list filtered by category (TABI, REPLICA, FUTURE).
+  Each card shows an image, title and price.
+- **Favorites:** shows the products saved with the bookmark button.
+  Tapping a card opens its details.
+- **Profile:** shows the name, email and role saved at registration,
+  a notifications switch, the number of saved items and a button
+  to clear favorites.
+- Tabs are kept in an IndexedStack, so the scroll position and the selected
+  category are preserved when switching tabs.
+
+### Detail screen (Navigator.push with arguments)
+
+- Tapping a product in Feed or Favorites calls Navigator.push.
+- The complete Product object (name, description, image, price, category,
+  rating, tags) is passed through RouteSettings.arguments and read with
+  ModalRoute.of(context)!.settings.arguments.
+- The bookmark button on the detail screen is synchronized with the
+  Feed and Favorites tabs.
+
+### Back navigation (Navigator.pop)
+
+- AppBar back icon calls Navigator.pop.
+- The "Back to list" button in the body also calls Navigator.pop.
+- The app is not restarted: the previous tab, category and bookmarks
+  stay as they were.
+
+### State management
+
+Favorites are stored in a shared FavoritesModel (ChangeNotifier).
+Widgets listen to it with ListenableBuilder.
+
+## Project Structure
+
+    lib/
+      main.dart
+      data/products.dart
+      models/product.dart
+      state/favorites_model.dart
+      screens/
+        root_screen.dart
+        feed_tab.dart
+        favorites_tab.dart
+        profile_tab.dart
+        detail_screen.dart
+        registration_screen.dart
+      widgets/
+        product_cover.dart
+        product_info.dart
+        cart_action_bar.dart
 
 ## Run
 
@@ -66,7 +120,7 @@ Inside LW5:
 ## Limitations
 
 - Registration is local; there is no server account or sign-in.
-- There is no separate profile viewing or editing screen.
+- The Profile screen only displays saved data; it cannot be edited.
 - Bookmarks reset after a full restart.
 - Add to Cart only shows a confirmation.
 - Prices and ratings are demo data.
@@ -80,4 +134,4 @@ Educational project.
 
 ## Author
 
-Nurdaulet Orazgeldyы
+Nurdaulet Orazgeldy
