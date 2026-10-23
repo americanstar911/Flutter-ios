@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'screens/product_screen.dart';
 import 'screens/registration_screen.dart';
+import 'screens/root_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,7 +57,7 @@ class Lab5App extends StatelessWidget {
         ),
       ),
       home: isRegistered
-          ? const CatalogScreen()
+          ? const RootScreen()
           : Builder(
               builder: (context) {
                 return RegistrationScreen(
@@ -100,7 +100,7 @@ class Lab5App extends StatelessWidget {
 
                     Navigator.of(context).pushAndRemoveUntil<void>(
                       MaterialPageRoute<void>(
-                        builder: (context) => const CatalogScreen(),
+                        builder: (context) => const RootScreen(),
                       ),
                       (route) => false,
                     );
