@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CartActionBar extends StatelessWidget {
-  final VoidCallback onAddToCart;
+  final VoidCallback? onAddToCart;
 
   const CartActionBar({super.key, required this.onAddToCart});
 
@@ -17,7 +17,9 @@ class CartActionBar extends StatelessWidget {
               child: FilledButton.icon(
                 onPressed: onAddToCart,
                 icon: const Icon(Icons.shopping_bag_outlined),
-                label: const Text('Add to Cart'),
+                label: Text(
+                  onAddToCart == null ? 'Select a size' : 'Add to Cart',
+                ),
                 style: FilledButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
