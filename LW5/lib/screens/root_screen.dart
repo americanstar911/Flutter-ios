@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../state/cart_model.dart';
+import '../state/orders_model.dart';
+import 'cart_screen.dart';
 import 'favorites_tab.dart';
 import 'feed_tab.dart';
 import 'profile_tab.dart';
+import '../state/app_settings.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -17,9 +21,37 @@ class _RootScreenState extends State<RootScreen> {
   static const titles = ['Maison Margiela', 'Favorites', 'Profile'];
 
   @override
+  void initState() {
+    super.initState();
+    orders.load();
+    appSettings.load();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(titles[index])),
+      appBar: AppBar(
+        title: Text(titles[index]),
+        actions: [
+          ListenableBuilder(
+            listenable: cart,
+            builder: (context, _) => IconButton(
+              tooltip: 'Cart',
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute<void>(builder: (_) => const CartScreen()),
+              ),
+              icon: Badge(
+                isLabelVisible: cart.count > 0,
+                label: Text('${cart.count}'),
+                backgroundColor: Colors.black,
+                textColor: Colors.white,
+                child: const Icon(Icons.shopping_bag_outlined),
+              ),
+            ),
+          ),
+        ],
+      ),
       // IndexedStack сохраняет состояние вкладок при переключении
       body: IndexedStack(
         index: index,

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../state/favorites_model.dart';
+import '../state/orders_model.dart';
+import 'orders_screen.dart';
+import '../state/app_settings.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
@@ -14,7 +17,6 @@ class _ProfileTabState extends State<ProfileTab> {
   String name = 'Guest';
   String email = '-';
   String role = '-';
-  bool notifications = true;
 
   @override
   void initState() {
@@ -61,12 +63,74 @@ class _ProfileTabState extends State<ProfileTab> {
         const SizedBox(height: 24),
         ListTile(leading: const Icon(Icons.email_outlined), title: Text(email)),
         ListTile(leading: const Icon(Icons.badge_outlined), title: Text(role)),
+        const SizedBox(height: 8),
+        ListenableBuilder(
+          listenable: orders,
+          builder: (context, _) => Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'LOYALTY',
+                      style: TextStyle(letterSpacing: 2, fontSize: 12),
+                    ),
+                    Text(
+                      orders.levelName.toUpperCase(),
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  '${orders.points} points',
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                LinearProgressIndicator(
+                  value: orders.progress,
+                  minHeight: 6,
+                  color: Colors.black,
+                  backgroundColor: Colors.black12,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  orders.isMaxLevel
+                      ? 'Highest level reached'
+                      : '${orders.pointsToNext} points to ${orders.nextLevelName}',
+                  style: const TextStyle(fontSize: 12),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        ListTile(
+          leading: const Icon(Icons.receipt_long_outlined),
+          title: const Text('Order history'),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<void>(builder: (_) => const OrdersScreen()),
+          ),
+        ),
         const Divider(),
-        SwitchListTile(
-          title: const Text('Notifications'),
-          value: notifications,
-          activeThumbColor: Colors.black,
-          onChanged: (v) => setState(() => notifications = v),
+        ListenableBuilder(
+          listenable: appSettings,
+          builder: (context, _) => SwitchListTile(
+            title: const Text('Notifications'),
+            subtitle: const Text('Pop-ups: added to cart, order status'),
+            value: appSettings.notifications,
+            activeThumbColor: Colors.black,
+            onChanged: appSettings.setNotifications,
+          ),
         ),
         ListenableBuilder(
           listenable: favorites,
