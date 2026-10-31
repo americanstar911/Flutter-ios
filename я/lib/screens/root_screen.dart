@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../state/app_settings.dart';
 import '../state/cart_model.dart';
 import '../state/orders_model.dart';
 import 'cart_screen.dart';
 import 'favorites_tab.dart';
 import 'feed_tab.dart';
 import 'profile_tab.dart';
-import '../state/app_settings.dart';
+import 'smart_catalog_screen.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -33,6 +34,16 @@ class _RootScreenState extends State<RootScreen> {
       appBar: AppBar(
         title: Text(titles[index]),
         actions: [
+          IconButton(
+            tooltip: 'Smart catalog',
+            icon: const Icon(Icons.grid_view),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (_) => const SmartCatalogScreen(),
+              ),
+            ),
+          ),
           ListenableBuilder(
             listenable: cart,
             builder: (context, _) => IconButton(
