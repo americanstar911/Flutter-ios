@@ -4,7 +4,7 @@ Flutter coursework app inspired by Maison Margiela.
 LAB 5, LAB 6 and LAB 7 are implemented in the same project.
 
 Author: Nurdaulet Orazgeldy
-Project folder: LW5
+Project folder: ProjectIOS
 
 ## LAB 5 — Catalog and Product Details
 
@@ -103,15 +103,15 @@ Widgets listen to it with ListenableBuilder.
 
 From the repository root:
 
-    cd LW5
+    cd ProjectIOS
     flutter pub get
     flutter run
 
-For Xcode, open LW5/ios/Runner.xcworkspace.
+For Xcode, open ProjectIOS/ios/Runner.xcworkspace.
 
 ## Checks
 
-Inside LW5:
+Inside ProjectIOS:
 
     dart format lib test
     flutter analyze
