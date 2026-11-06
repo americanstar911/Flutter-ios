@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../state/app_settings.dart';
 import '../state/favorites_model.dart';
 import '../state/orders_model.dart';
 import 'orders_screen.dart';
-import '../state/app_settings.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});

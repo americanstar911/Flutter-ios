@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../state/app_settings.dart';
 import '../state/cart_model.dart';
 import '../state/favorites_model.dart';
 import '../widgets/cart_action_bar.dart';
 import '../widgets/product_cover.dart';
 import '../widgets/product_info.dart';
 import 'cart_screen.dart';
-import '../state/app_settings.dart';
 
 /// Navigator.push с передачей целого объекта через arguments.
 void openDetail(BuildContext context, Product product) {
