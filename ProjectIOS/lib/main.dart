@@ -55,6 +55,34 @@ class Lab5App extends StatelessWidget {
             shape: const RoundedRectangleBorder(),
           ),
         ),
+        dialogTheme: const DialogThemeData(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
+          shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black)),
+          titleTextStyle: TextStyle(
+            fontFamily: 'CormorantGaramond',
+            fontSize: 28,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+          contentTextStyle: TextStyle(
+            fontFamily: 'RobotoMono',
+            fontSize: 13,
+            height: 1.7,
+            color: Colors.black,
+          ),
+        ),
+        // Чёрные уведомления без цветного оттенка
+        snackBarTheme: const SnackBarThemeData(
+          backgroundColor: Colors.black,
+          contentTextStyle: TextStyle(
+            fontFamily: 'RobotoMono',
+            color: Colors.white,
+          ),
+          actionTextColor: Colors.white,
+          shape: RoundedRectangleBorder(),
+        ),
       ),
       home: isRegistered
           ? const RootScreen()
@@ -77,15 +105,21 @@ class Lab5App extends StatelessWidget {
                       builder: (dialogContext) {
                         return AlertDialog(
                           scrollable: true,
-                          title: const Text('Registration successful!'),
+                          title: const Text('Registration successful'),
                           content: Text(
                             'Your profile has been saved.\n\n'
                             'Full Name: $name\n'
                             'Email: $email\n'
                             'Role: $role',
                           ),
+                          actionsPadding: const EdgeInsets.fromLTRB(
+                            24,
+                            0,
+                            24,
+                            20,
+                          ),
                           actions: [
-                            TextButton(
+                            FilledButton(
                               onPressed: () {
                                 Navigator.of(dialogContext).pop();
                               },
