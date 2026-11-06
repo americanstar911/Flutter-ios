@@ -1,7 +1,7 @@
 # Footwear
 
 Flutter coursework app inspired by Maison Margiela.
-LAB 5, LAB 6, LAB 7 and LW8 are implemented in the same project.
+LAB 5, LAB 6, LAB 7, LW8 and LW9 are implemented in the same project.
 
 Author: Nurdaulet Orazgeldy
 Project folder: ProjectIOS
@@ -70,6 +70,21 @@ Screen: Smart Catalog (grid icon in the AppBar of the root screen).
 In Chrome the mouse is enabled as a drag device so pull-to-refresh works
 without a touch screen.
 
+## LW9 — Global Cart with Provider
+
+Entry point: lib/lab9/main_lab9.dart
+
+    flutter run -d chrome -t lib/lab9/main_lab9.dart
+
+- **CartProvider** (ChangeNotifier) stores the cart, item count and total price.
+- **ChangeNotifierProvider** wraps MaterialApp so every screen shares one cart.
+- **Catalog screen:** 6 products with Add to Cart / Remove toggles and a live
+  AppBar badge (Consumer).
+- **Cart screen:** selected products, individual remove buttons, total price
+  and a Clear All button.
+- Changes on the cart screen update the catalog immediately: button states and
+  the badge are rebuilt with context.watch.
+
 ## Project Structure
 
     lib/
@@ -104,6 +119,11 @@ without a touch screen.
         product_info.dart
         product_grid.dart
         cart_action_bar.dart
+      lab9/
+        main_lab9.dart
+        cart_provider.dart
+        catalog_screen.dart
+        cart_view_screen.dart
 
 ## Run
 
@@ -129,6 +149,7 @@ Inside ProjectIOS:
 - Favorites reset after a full restart.
 - Order tracking is a demo timer, not a real delivery service.
 - Changes in Smart Catalog are not saved; Reset Catalog restores the seed data.
+- The LW9 cart is separate from the main app cart and is kept in memory only.
 - product_screen.dart is the original LAB 5 screen and is no longer used.
 - Prices and ratings are demo data.
 
